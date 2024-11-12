@@ -1,0 +1,194 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+:root {
+    --azul: #6495ed;
+    --azul-escuro: #2c4d8a;
+}
+
+* {
+    margin: 0;
+    border: 0;
+    padding: 0;
+    outline: none;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--azul);
+}
+
+#container {
+    position: relative;
+    width: 500px;
+    height: 105px;
+    background-color: white;
+    padding: 28px 32px;
+    overflow: hidden;
+    border-radius: 15px;
+    font-family: 'Roboto', sans-serif;
+    transition: 0.6s ease-out;
+}
+
+#buscador {
+    display: flex;
+    width: 100%;
+    height: min-content;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#buscador input {
+    font-size: 24px;
+    width: 80%;
+    color: var(--azul-escuro);
+    font-weight: 500;
+    text-transform: uppercase;
+    padding-left: 32px;
+}
+
+#buscador input::placeholder {
+    font-size: 24px;
+    font-weight: 500;
+    text-transform: capitalize;
+}
+
+#buscador button {
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+    color: var(--azul-escuro);
+    border-radius: 50%;
+    background-color: #e6edfa;
+    font-size: 22px;
+    transition: 0.4s ease;
+}
+
+#buscador button:hover {
+    color: white;
+    background-color: var(--azul-escuro);
+}
+
+#buscador i {
+    position: absolute;
+    color: var(--azul-escuro);
+    font-size: 28px;
+}
+
+img {
+    height: 100px;
+}
+
+#resultado {
+    text-align: center;
+}
+
+#resultado img {
+    width: 60%;
+    margin-top: 30px;
+}
+
+#resultado #temperatura {
+    position: relative;
+    color: var(--azul-escuro);
+    font-size: 4rem;
+    font-weight: 800;
+    margin-top: 30px;
+    margin-left: -16px;
+}
+
+#resultado #temperatura span {
+    position: absolute;
+    margin-left: 4px;
+    font-size: 1.5rem;
+}
+
+#resultado #descricao {
+    color: var(--azul-escuro);
+    font-size: 22px;
+    font-weight: 500;
+    text-transform: capitalize;
+}
+
+#detalhes {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+
+#detalhes #umidade, #detalhes #vento {
+    display: flex;
+    align-items: center;
+    width: 50%;
+    height: 100px;
+}
+
+#detalhes #umidade {
+    padding-left: 20px;
+    justify-content: flex-start;
+}
+
+#detalhes #vento {
+    padding-left: 20px;
+    justify-content: flex-end;
+}
+
+#detalhes i {
+    color: var(--azul-escuro);
+    font-size: 26px;
+    margin-right: 10px;
+    margin-top: 6px;
+}
+
+#detalhes span {
+    color: var(--azul-escuro);
+    font-size: 22px;
+    font-weight: 500;
+}
+
+#detalhes p {
+    color: var(--azul-escuro);
+    font-size: 14px;
+    font-weight: 500;
+}
+
+#not_found {
+    width: 100%;
+    text-align: center;
+    margin-top: 50px;
+    scale: 0;
+    opacity: 0;
+    display: none;
+}
+
+#not_found img {
+    width: 70%;
+}
+
+#not_found p {
+    color: var(--azul-escuro);
+    font-size: 22px;
+    font-weight: 500;
+    margin-top: 12px;
+}
+
+#resultado, #detalhes {
+    opacity: 0;
+    scale: 0;
+}
+
+.fade-in {
+    animation: 0.5s  fadeIn forwards;
+    animation-delay: 0.5s;
+}
+
+@keyframes fadeIn {
+    to {
+        scale: 1;
+        opacity: 1;
+    }
+}
