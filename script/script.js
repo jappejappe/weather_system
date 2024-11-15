@@ -1,17 +1,19 @@
-const container = document.getElementById("#container");
-const buscador = document.getElementById("#buscador button");
-const error404 = document.getElementById("#not_found");
-const resultado = document.getElementById("#resultado");
-const detalhes = document.getElementById("#detalhes");
+const container = document.getElementById("container");
+const buscador = document.querySelector("#buscador button");
+const error404 = document.getElementById("not_found");
+const resultado = document.getElementById("resultado");
+const detalhes = document.getElementById("detalhes");
 
-search.addEventListener('click', ()=>{
-    const API_KEY = "703b44dd379b4c2e947a4a37e1918d3d";
+buscador.addEventListener('click', ()=>{
+    const API_KEY = "your_api_key";
     const cidade = document.querySelector('#buscador input').value;
 
     if (cidade === '')
         return;
 
     fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cidade}&appid=${API_KEY}`).then(response => response.json()).then(json => {
+        const detalhes = document.querySelector('#detalhes');
+
         if (json.cod === '404'){
             container.style.height = '400px';
             resultado.style.display = 'none';
@@ -24,11 +26,12 @@ search.addEventListener('click', ()=>{
         error404.style.display = 'none';
         error404.classList.remove('fadeIn');
 
-        const imagem = document.querySelector('resultado img');
-        const temperatura = document.querySelector('resultado #temperatura')
-        const detalhes = document.querySelector('resultado #detalhes');
-        const umidade = document.querySelector('detalhes #umidade span');
-        const vento = document.querySelector('detalhes #vento span');
+        const imagem = document.querySelector('#resultado img');
+        const temperatura = document.querySelector('#resultado #temperatura')
+        const umidade = document.querySelector('#detalhes #umidade span');
+        const vento = document.querySelector('#detalhes #vento span');
+
+        console.log(umidade)
 
         switch(json.weather[0].main){
             case 'Clear':
