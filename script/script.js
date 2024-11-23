@@ -5,14 +5,14 @@ const resultado = document.getElementById("resultado");
 const detalhes = document.getElementById("detalhes");
 
 buscador.addEventListener('click', ()=>{
-    const API_KEY = "your_api_key";
+    const API_KEY = "e81b6040c779024fd6466a0e67b4c5bf";
     const cidade = document.querySelector('#buscador input').value;
 
     if (cidade === '')
         return;
 
     fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cidade}&appid=${API_KEY}`).then(response => response.json()).then(json => {
-        const detalhes = document.querySelector('#detalhes');
+        const detalhes = document.getElementById("detalhes");
 
         if (json.cod === '404'){
             container.style.height = '400px';
@@ -30,8 +30,6 @@ buscador.addEventListener('click', ()=>{
         const temperatura = document.querySelector('#resultado #temperatura')
         const umidade = document.querySelector('#detalhes #umidade span');
         const vento = document.querySelector('#detalhes #vento span');
-
-        console.log(umidade)
 
         switch(json.weather[0].main){
             case 'Clear':
@@ -58,16 +56,29 @@ buscador.addEventListener('click', ()=>{
                 imagem.src = '';
         }
 
-        temperatura.innerHTML = `${parseInt(json.main.temp)}<span>ºC</span>`;
-        detalhes.innerHTML = `${json.weather[0].detalhes}`;
-        umidade.innerHTML = `${json.main.umidade}%`;
-        vento.innerHTML = `${parseInt(json.main.vento)}Km/h`;
+        console.log(json)
 
-        resultado.style.display = '';
-        detalhes.style.display = '';
+        const weather = json.weather[0].main;
+        const humidity = json.main.humidity;
+        const temp = json.main.temp;
+        const speed = json.wind.speed;
+
+        temperatura.innerHTML = `${parseInt(temp)}<span>ºC</span>`;
+        detalhes.innerHTML = `${weather}`;
+        umidade.innerHTML = `${humidity}%`;
+        vento.innerHTML = `${parseInt(speed)}Km/h`;
+
+        console.log(weather, humidity, temp, speed);
+
+        console.log('Estado antes:', resultado.style.display, detalhes.style.display);
+
+        resultado.style.display = 'block';
+        detalhes.style.display = 'block';
         resultado.classList.add('fadeIn');
         detalhes.classList.add('fadeIn');
         container.style.height = '590px';
+
+        console.log('Estado depois:', resultado.style.display, detalhes.style.display);
 
     });
 

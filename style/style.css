@@ -83,11 +83,13 @@ img {
 }
 
 #resultado {
+    display: block;
     text-align: center;
 }
 
 #resultado img {
-    width: 60%;
+    width: 45%;
+    height: 45%;
     margin-top: 30px;
 }
 
